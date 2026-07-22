@@ -28,23 +28,23 @@ function Navbar() {
   ];
 
   return (
-    <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-cream-100/95 backdrop-blur-md shadow-sm py-3 sm:py-4 border-b border-cream-300/50' : 'bg-transparent py-5 sm:py-8'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
+    <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-cream-100/95 backdrop-blur-md shadow-sm py-3.5 sm:py-4 border-b border-cream-300/50' : 'bg-transparent py-5 sm:py-8'}`}>
+      <div className="max-w-[1536px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 flex justify-between items-center">
         
         {/* Logo */}
-        <div className="flex items-center gap-2.5 sm:gap-3">
-          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded border-2 border-sage-500 flex items-center justify-center bg-sage-500/10 shrink-0">
-            <span className="font-serif font-bold text-sage-600 text-base sm:text-lg leading-none pr-[1px]">R</span>
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded border-2 border-sage-500 flex items-center justify-center bg-sage-500/10 shrink-0">
+            <span className="font-serif font-bold text-sage-600 text-lg leading-none pr-[1px]">R</span>
           </div>
           <div>
             <h1 className="font-sans font-bold text-ink-900 leading-none text-base sm:text-lg tracking-wide uppercase">Ramanan Murugan</h1>
-            <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-ink-500 mt-0.5 sm:mt-1">Business Analyst</p>
+            <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-ink-500 mt-1">Business Analyst</p>
           </div>
         </div>
         
         {/* Desktop Nav */}
         <div className="hidden lg:flex flex-1 justify-center">
-          <ul className="flex gap-8 xl:gap-10 text-xs font-bold uppercase tracking-widest text-ink-500">
+          <ul className="flex gap-8 xl:gap-12 text-xs font-bold uppercase tracking-widest text-ink-500">
             {links.map(link => (
               <li key={link.name}>
                 <a href={link.href} className="hover:text-ink-900 transition-colors pb-2 border-b-2 border-transparent hover:border-sage-500">{link.name}</a>
@@ -107,33 +107,33 @@ function Navbar() {
 // ==========================================
 function Hero() {
   return (
-    <section className="relative pt-24 sm:pt-32 pb-16 lg:pt-48 lg:pb-32 px-4 sm:px-6 max-w-7xl mx-auto overflow-hidden">
+    <section className="relative pt-24 sm:pt-32 lg:pt-40 pb-16 lg:pb-28 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 max-w-[1536px] mx-auto overflow-hidden">
       <div className="absolute top-20 right-20 w-72 sm:w-96 h-72 sm:h-96 bg-sage-500/5 rounded-full blur-3xl -z-10"></div>
       <div className="absolute bottom-20 left-10 w-56 sm:w-72 h-56 sm:h-72 bg-cream-300/20 rounded-full blur-2xl -z-10"></div>
       
-      <div className="flex flex-col lg:flex-row items-center gap-10 sm:gap-16 lg:gap-8">
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-12 xl:gap-16">
         
         {/* Left Content */}
         <motion.div 
-          className="lg:w-1/2 w-full text-left"
+          className="lg:w-7/12 xl:w-3/5 w-full text-left"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
         >
           <span className="section-label">Data Driven Decisions</span>
           
-          <h1 className="text-3xl sm:text-5xl md:text-7xl font-serif text-ink-900 leading-[1.15] mb-6 sm:mb-8">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif text-ink-900 leading-[1.12] mb-6 sm:mb-8">
             I build data <br className="hidden sm:inline" />
             systems that are <br className="hidden sm:inline" />
             <span className="italic font-light text-sage-600">intuitive, intelligent</span> <br className="hidden sm:inline" />
             and impactful.
           </h1>
           
-          <p className="text-ink-500 text-base sm:text-lg md:text-xl leading-relaxed mb-8 sm:mb-10 max-w-xl font-light">
+          <p className="text-ink-500 text-base sm:text-lg lg:text-xl leading-relaxed mb-8 sm:mb-10 max-w-2xl font-light">
             I'm Ramanan Murugan, a dedicated Business and Data Analyst. My core focus is advanced data management, leveraging AI to automate tasks, simplify complex workflows, and engineer high-quality reports. I am deeply committed to continuous upskilling, improving my analytics expertise every single day to drive real business growth.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             <a href="#work" className="btn-primary">
               View My Work &rarr;
             </a>
@@ -145,13 +145,20 @@ function Hero() {
 
         {/* Right Profile Graphic */}
         <motion.div 
-          className="lg:w-1/2 w-full relative flex justify-center mt-4 lg:mt-0"
-          initial={{ opacity: 0, scale: 0.95 }}
+          className="lg:w-5/12 xl:w-2/5 w-full relative flex justify-center lg:justify-end mt-4 lg:mt-0"
+          initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
         >
-          <div className="relative w-full max-w-[280px] sm:max-w-md aspect-[4/5] bg-cream-200 rounded-[30px] sm:rounded-[40px] rounded-br-[80px] sm:rounded-br-[120px] overflow-hidden border-4 sm:border-8 border-white shadow-xl sm:shadow-2xl flex items-center justify-center group">
-             <img src="./profile.jpg" alt="Ramanan Murugan" className="w-full h-full object-cover relative z-10 group-hover:scale-105 transition-transform duration-700" />
+          <div className="relative w-full max-w-[280px] sm:max-w-sm lg:max-w-md xl:max-w-lg aspect-[4/5] bg-cream-200 rounded-[30px] sm:rounded-[40px] rounded-br-[80px] sm:rounded-br-[120px] overflow-hidden border-4 sm:border-8 border-white shadow-xl sm:shadow-2xl flex items-center justify-center group">
+             <img 
+               src="./profile.jpg" 
+               alt="Ramanan Murugan" 
+               loading="eager"
+               fetchpriority="high"
+               decoding="async"
+               className="w-full h-full object-cover relative z-10 group-hover:scale-105 transition-transform duration-700" 
+             />
              <div className="absolute inset-0 opacity-20 z-0" style={{ backgroundImage: 'radial-gradient(#737C6C 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
           </div>
         </motion.div>
@@ -171,11 +178,11 @@ function About() {
         initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.5 }}
       >
         <span className="section-label">Background</span>
         <h2 className="section-title">About Me</h2>
-        <div className="text-ink-500 text-base sm:text-lg leading-relaxed space-y-4 sm:space-y-6 w-full">
+        <div className="text-ink-500 text-base sm:text-lg leading-relaxed space-y-4 sm:space-y-6 w-full max-w-5xl">
           <p>
             I am a Business Analyst with a strong focus on data management and strategic business development planning. Currently, my role centers on data handling, pipeline management, and creating impactful reports that drive organizational growth.
           </p>
@@ -229,15 +236,15 @@ function Projects() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         {projects.map((project, i) => (
           <motion.div 
             key={i} 
             className="group block"
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
+            transition={{ delay: i * 0.08 }}
           >
             <div className={`p-6 sm:p-8 ${project.bgColor} rounded-sm flex flex-col justify-between mb-4 sm:mb-6 relative overflow-hidden transition-transform group-hover:-translate-y-1.5 duration-300 min-h-[220px] sm:aspect-[4/3]`}>
               <div className="flex justify-between items-start z-10 mb-4">
@@ -248,7 +255,7 @@ function Projects() {
                   Academic
                 </span>
               </div>
-              <h3 className={`text-base sm:text-xl font-serif leading-relaxed sm:leading-tight max-w-[260px] z-10 mb-2 ${project.dark ? 'text-white' : 'text-ink-900'}`}>
+              <h3 className={`text-base sm:text-xl font-serif leading-relaxed sm:leading-tight max-w-[280px] z-10 mb-2 ${project.dark ? 'text-white' : 'text-ink-900'}`}>
                 {project.description}
               </h3>
               {project.dark ? (
@@ -260,7 +267,7 @@ function Projects() {
 
             <div className="flex justify-between items-start pb-4 border-b border-cream-300">
               <div>
-                <h4 className="font-bold text-ink-900 text-sm sm:text-base mb-1 max-w-[250px]">{project.title}</h4>
+                <h4 className="font-bold text-ink-900 text-sm sm:text-base mb-1 max-w-[280px]">{project.title}</h4>
                 <p className="text-xs text-ink-500 font-medium">{project.tech}</p>
               </div>
             </div>
@@ -317,20 +324,20 @@ function Services() {
             <h2 className="text-3xl sm:text-4xl font-serif text-ink-900">Expertise</h2>
           </div>
           
-          <div className="lg:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="lg:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {services.map((service, i) => (
               <motion.div 
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="flex flex-col bg-white p-6 rounded-sm border border-cream-300/80 shadow-xs"
+                transition={{ delay: i * 0.06 }}
+                className="flex flex-col bg-white p-6 sm:p-8 rounded-sm border border-cream-300/80 shadow-sm hover:border-sage-500 transition-colors"
               >
                 <div className="h-11 w-11 rounded-full border border-cream-300 flex items-center justify-center text-sage-500 mb-5 bg-cream-50">
                   {service.icon}
                 </div>
-                <h3 className="font-bold text-ink-900 text-base mb-2">{service.title}</h3>
+                <h3 className="font-bold text-ink-900 text-base sm:text-lg mb-2">{service.title}</h3>
                 <p className="text-xs sm:text-sm text-ink-500 leading-relaxed">{service.desc}</p>
               </motion.div>
             ))}
@@ -424,7 +431,7 @@ function Experience() {
                 transition={{ delay: i * 0.08 }}
               >
                 <div className="flex flex-col items-center">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white border-2 border-cream-200 shadow-xs flex items-center justify-center text-ink-500 shrink-0 relative z-10">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white border-2 border-cream-200 shadow-sm flex items-center justify-center text-ink-500 shrink-0 relative z-10">
                     {step.icon}
                   </div>
                 </div>
@@ -436,7 +443,7 @@ function Experience() {
                   </div>
                   <p className="text-xs sm:text-sm font-bold text-sage-500 uppercase tracking-wider mb-1">{step.company}</p>
                   <p className="text-[11px] sm:text-xs text-ink-400 font-mono mb-3">{step.date}</p>
-                  <div className="text-xs sm:text-sm text-ink-500 leading-relaxed max-w-2xl">{step.desc}</div>
+                  <div className="text-xs sm:text-sm text-ink-500 leading-relaxed max-w-3xl">{step.desc}</div>
                 </div>
               </motion.div>
             ))}
@@ -489,7 +496,7 @@ function Programmes() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.08 }}
               >
                 <div className="flex items-center gap-3 mb-4">
                   <span className="text-[10px] font-bold text-cream-400 uppercase tracking-widest">{step.num}</span>
@@ -559,7 +566,7 @@ function Education() {
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
                   <h3 className="text-xl sm:text-2xl font-serif text-ink-900">{edu.degree}</h3>
-                  <span className="text-[11px] font-mono text-ink-500 self-start sm:self-auto bg-cream-200 px-2.5 py-1 rounded-sm">{edu.date}</span>
+                  <span className="text-[11px] font-mono text-ink-500 self-start sm:self-auto bg-cream-200 px-3 py-1 rounded-sm">{edu.date}</span>
                 </div>
                 <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-sage-500 mb-1.5">{edu.major}</p>
                 <p className="text-xs sm:text-sm text-ink-500">{edu.school}</p>
@@ -608,7 +615,7 @@ function Skills() {
         initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.5 }}
       >
         <span className="section-label">Capabilities</span>
         <h2 className="section-title">Skills & Software</h2>
@@ -616,7 +623,7 @@ function Skills() {
           {skillGroups.map((group, i) => (
             <div key={i} className="bg-white rounded-sm p-6 sm:p-8 border border-cream-300 hover:border-sage-500 transition-colors">
               <h3 className="text-base sm:text-lg font-serif text-ink-900 mb-4 sm:mb-6">{group.category}</h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 sm:gap-2.5">
                 {group.skills.map(skill => (
                   <span key={skill} className="px-2.5 sm:px-3 py-1 bg-cream-100 text-ink-800 text-[11px] sm:text-xs font-medium rounded-sm border border-cream-300">
                     {skill}
@@ -653,7 +660,7 @@ function Certifications() {
         initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.5 }}
       >
         <span className="section-label">Continuous Learning</span>
         <h2 className="section-title">Certifications</h2>
@@ -677,7 +684,7 @@ function Certifications() {
 function Stats() {
   return (
     <div className="bg-cream-200 border-y border-cream-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+      <div className="max-w-[1536px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 py-12 sm:py-16">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 sm:gap-y-0 divide-x-0 sm:divide-x divide-cream-300/50 text-center">
           <div className="px-2 sm:px-4">
             <p className="text-3xl sm:text-4xl md:text-5xl font-serif text-ink-900 mb-1.5 sm:mb-2">3</p>
@@ -707,11 +714,11 @@ function Stats() {
 function Contact() {
   return (
     <section id="contact" className="section-container pb-0">
-      <div className="bg-cream-200 border border-cream-300 p-6 sm:p-12 md:p-16 flex flex-col lg:flex-row justify-between items-center gap-8 sm:gap-10 rounded-sm">
+      <div className="bg-cream-200 border border-cream-300 p-6 sm:p-12 lg:p-16 flex flex-col lg:flex-row justify-between items-center gap-8 sm:gap-10 rounded-sm">
         
         <div className="lg:w-1/2 text-center lg:text-left w-full">
           <span className="section-label">Let's Create Something Great</span>
-          <h2 className="text-3xl sm:text-4xl font-serif text-ink-900 mb-6 sm:mb-8 max-w-sm mx-auto lg:mx-0">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-ink-900 mb-6 sm:mb-8 max-w-md mx-auto lg:mx-0">
             Have a project in mind? I'd love to hear about it.
           </h2>
           <a href="mailto:ramananmurugan081@gmail.com" className="btn-primary">
@@ -756,7 +763,7 @@ function Contact() {
 function Footer() {
   return (
     <footer className="pt-16 sm:pt-24 pb-8 sm:pb-12 border-t border-cream-300 mt-16 sm:mt-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row justify-between gap-10 sm:gap-16 mb-16 sm:mb-24">
+      <div className="max-w-[1536px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 flex flex-col lg:flex-row justify-between gap-10 sm:gap-16 mb-16 sm:mb-24">
         
         {/* Brand */}
         <div className="lg:w-1/3">
@@ -805,7 +812,7 @@ function Footer() {
       </div>
       
       {/* Bottom Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 border-t border-cream-300 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 text-[11px] sm:text-xs text-ink-500 text-center sm:text-left">
+      <div className="max-w-[1536px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 pt-6 sm:pt-8 border-t border-cream-300 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 text-[11px] sm:text-xs text-ink-500 text-center sm:text-left">
         <p>© 2026 Ramanan Murugan. All rights reserved.</p>
         <div className="flex gap-4 sm:gap-6">
           <a href="#" className="hover:text-ink-900 transition-colors">Privacy Policy</a>
