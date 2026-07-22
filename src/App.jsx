@@ -19,35 +19,41 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const links = ['About', 'Work', 'Services', 'Process', 'Contact'];
+  const links = [
+    { name: 'About', href: '#about' },
+    { name: 'Work', href: '#work' },
+    { name: 'Services', href: '#services' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Contact', href: '#contact' },
+  ];
 
   return (
-    <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-cream-100/90 backdrop-blur-md shadow-sm py-4 border-b border-cream-300/50' : 'bg-transparent py-8'}`}>
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+    <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-cream-100/95 backdrop-blur-md shadow-sm py-3 sm:py-4 border-b border-cream-300/50' : 'bg-transparent py-5 sm:py-8'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
         
         {/* Logo */}
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded border-2 border-sage-500 flex items-center justify-center bg-sage-500/10">
-            <span className="font-serif font-bold text-sage-600 text-lg leading-none pr-[1px]">R</span>
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded border-2 border-sage-500 flex items-center justify-center bg-sage-500/10 shrink-0">
+            <span className="font-serif font-bold text-sage-600 text-base sm:text-lg leading-none pr-[1px]">R</span>
           </div>
           <div>
-            <h1 className="font-sans font-bold text-ink-900 leading-none text-lg tracking-wide uppercase">Ramanan Murugan</h1>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-ink-500 mt-1">Business Analyst</p>
+            <h1 className="font-sans font-bold text-ink-900 leading-none text-base sm:text-lg tracking-wide uppercase">Ramanan Murugan</h1>
+            <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-ink-500 mt-0.5 sm:mt-1">Business Analyst</p>
           </div>
         </div>
         
         {/* Desktop Nav */}
         <div className="hidden lg:flex flex-1 justify-center">
-          <ul className="flex gap-10 text-xs font-bold uppercase tracking-widest text-ink-500">
+          <ul className="flex gap-8 xl:gap-10 text-xs font-bold uppercase tracking-widest text-ink-500">
             {links.map(link => (
-              <li key={link}>
-                <a href={`#${link.toLowerCase()}`} className="hover:text-ink-900 transition-colors pb-2 border-b-2 border-transparent hover:border-sage-500">{link}</a>
+              <li key={link.name}>
+                <a href={link.href} className="hover:text-ink-900 transition-colors pb-2 border-b-2 border-transparent hover:border-sage-500">{link.name}</a>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Action Button */}
+        {/* Desktop Action Button */}
         <div className="hidden lg:block">
           <a href="./RAMANAN_RESUME.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary">
             Resume &rarr;
@@ -55,24 +61,41 @@ function Navbar() {
         </div>
 
         {/* Mobile Nav Toggle */}
-        <button className="lg:hidden text-ink-900" onClick={() => setIsOpen(!isOpen)}>
+        <button 
+          className="lg:hidden text-ink-900 p-2 rounded-md hover:bg-cream-200/60 transition-colors" 
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle Navigation Menu"
+        >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Dropdown Menu */}
       {isOpen && (
         <motion.div 
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
-          className="lg:hidden absolute top-full left-0 w-full bg-cream-50 shadow-xl py-8 flex flex-col items-center gap-6 border-t border-cream-300"
+          className="lg:hidden fixed inset-x-0 top-[60px] sm:top-[72px] bg-cream-100/98 backdrop-blur-xl shadow-2xl py-6 px-6 flex flex-col items-center gap-5 border-b border-cream-300 z-50"
         >
           {links.map(link => (
-            <a key={link} href={`#${link.toLowerCase()}`} onClick={() => setIsOpen(false)} className="text-ink-500 hover:text-ink-900 text-sm font-bold uppercase tracking-widest">
-              {link}
+            <a 
+              key={link.name} 
+              href={link.href} 
+              onClick={() => setIsOpen(false)} 
+              className="text-ink-700 hover:text-ink-900 text-sm font-bold uppercase tracking-widest py-1.5 w-full text-center"
+            >
+              {link.name}
             </a>
           ))}
-          <a href="./RAMANAN_RESUME.pdf" target="_blank" className="btn-primary mt-4">Resume &rarr;</a>
+          <a 
+            href="./RAMANAN_RESUME.pdf" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            onClick={() => setIsOpen(false)}
+            className="btn-primary mt-2 w-full text-center"
+          >
+            Resume &rarr;
+          </a>
         </motion.div>
       )}
     </nav>
@@ -84,33 +107,33 @@ function Navbar() {
 // ==========================================
 function Hero() {
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 max-w-7xl mx-auto overflow-hidden">
-      <div className="absolute top-20 right-20 w-96 h-96 bg-sage-500/5 rounded-full blur-3xl -z-10"></div>
-      <div className="absolute bottom-20 left-10 w-72 h-72 bg-cream-300/20 rounded-full blur-2xl -z-10"></div>
+    <section className="relative pt-24 sm:pt-32 pb-16 lg:pt-48 lg:pb-32 px-4 sm:px-6 max-w-7xl mx-auto overflow-hidden">
+      <div className="absolute top-20 right-20 w-72 sm:w-96 h-72 sm:h-96 bg-sage-500/5 rounded-full blur-3xl -z-10"></div>
+      <div className="absolute bottom-20 left-10 w-56 sm:w-72 h-56 sm:h-72 bg-cream-300/20 rounded-full blur-2xl -z-10"></div>
       
-      <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-8">
+      <div className="flex flex-col lg:flex-row items-center gap-10 sm:gap-16 lg:gap-8">
         
         {/* Left Content */}
         <motion.div 
-          className="lg:w-1/2"
-          initial={{ opacity: 0, x: -30 }}
+          className="lg:w-1/2 w-full text-left"
+          initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7 }}
         >
           <span className="section-label">Data Driven Decisions</span>
           
-          <h1 className="text-5xl md:text-7xl font-serif text-ink-900 leading-[1.1] mb-8">
-            I build data <br/>
-            systems that are <br/>
-            <span className="italic font-light text-sage-600">intuitive, intelligent</span><br/>
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-serif text-ink-900 leading-[1.15] mb-6 sm:mb-8">
+            I build data <br className="hidden sm:inline" />
+            systems that are <br className="hidden sm:inline" />
+            <span className="italic font-light text-sage-600">intuitive, intelligent</span> <br className="hidden sm:inline" />
             and impactful.
           </h1>
           
-          <p className="text-ink-500 text-lg md:text-xl leading-relaxed mb-10 max-w-xl font-light">
+          <p className="text-ink-500 text-base sm:text-lg md:text-xl leading-relaxed mb-8 sm:mb-10 max-w-xl font-light">
             I'm Ramanan Murugan, a dedicated Business and Data Analyst. My core focus is advanced data management, leveraging AI to automate tasks, simplify complex workflows, and engineer high-quality reports. I am deeply committed to continuous upskilling, improving my analytics expertise every single day to drive real business growth.
           </p>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
             <a href="#work" className="btn-primary">
               View My Work &rarr;
             </a>
@@ -120,14 +143,14 @@ function Hero() {
           </div>
         </motion.div>
 
-        {/* Right Image Area */}
+        {/* Right Profile Graphic */}
         <motion.div 
-          className="lg:w-1/2 relative flex justify-center"
+          className="lg:w-1/2 w-full relative flex justify-center mt-4 lg:mt-0"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
         >
-          <div className="relative w-full max-w-md aspect-[4/5] bg-cream-200 rounded-[40px] rounded-br-[120px] overflow-hidden border-8 border-white shadow-2xl flex items-center justify-center group">
+          <div className="relative w-full max-w-[280px] sm:max-w-md aspect-[4/5] bg-cream-200 rounded-[30px] sm:rounded-[40px] rounded-br-[80px] sm:rounded-br-[120px] overflow-hidden border-4 sm:border-8 border-white shadow-xl sm:shadow-2xl flex items-center justify-center group">
              <img src="./profile.jpg" alt="Ramanan Murugan" className="w-full h-full object-cover relative z-10 group-hover:scale-105 transition-transform duration-700" />
              <div className="absolute inset-0 opacity-20 z-0" style={{ backgroundImage: 'radial-gradient(#737C6C 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
           </div>
@@ -145,13 +168,14 @@ function About() {
   return (
     <section id="about" className="section-container">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6 }}
       >
+        <span className="section-label">Background</span>
         <h2 className="section-title">About Me</h2>
-        <div className="text-ink-500 text-lg leading-relaxed space-y-6 w-full">
+        <div className="text-ink-500 text-base sm:text-lg leading-relaxed space-y-4 sm:space-y-6 w-full">
           <p>
             I am a Business Analyst with a strong focus on data management and strategic business development planning. Currently, my role centers on data handling, pipeline management, and creating impactful reports that drive organizational growth.
           </p>
@@ -198,46 +222,46 @@ function Projects() {
 
   return (
     <section id="work" className="section-container">
-      <div className="flex justify-between items-end mb-16">
+      <div className="flex justify-between items-end mb-10 sm:mb-16">
         <div>
           <span className="section-label">Selected Work</span>
-          <h2 className="text-4xl md:text-5xl font-serif text-ink-900">College Projects</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-ink-900">College Projects</h2>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {projects.map((project, i) => (
           <motion.div 
             key={i} 
             className="group block"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
           >
-            <div className={`aspect-[4/3] ${project.bgColor} rounded-sm p-8 flex flex-col justify-between mb-6 relative overflow-hidden transition-transform group-hover:-translate-y-2 duration-300`}>
-              <div className="flex justify-between items-start z-10">
+            <div className={`p-6 sm:p-8 ${project.bgColor} rounded-sm flex flex-col justify-between mb-4 sm:mb-6 relative overflow-hidden transition-transform group-hover:-translate-y-1.5 duration-300 min-h-[220px] sm:aspect-[4/3]`}>
+              <div className="flex justify-between items-start z-10 mb-4">
                 <span className={`text-[10px] font-bold uppercase tracking-wider ${project.dark ? 'text-white/50' : 'text-ink-500/50'}`}>
                   {project.date}
                 </span>
-                <span className={`px-2 py-1 text-[10px] uppercase border rounded-sm ${project.dark ? 'text-white/30 border-white/20' : 'text-ink-500/30 border-ink-500/20'}`}>
+                <span className={`px-2 py-0.5 text-[9px] sm:text-[10px] uppercase border rounded-sm ${project.dark ? 'text-white/40 border-white/20' : 'text-ink-500/40 border-ink-500/20'}`}>
                   Academic
                 </span>
               </div>
-              <h3 className={`text-xl font-serif leading-tight max-w-[220px] z-10 ${project.dark ? 'text-white' : 'text-ink-900'}`}>
+              <h3 className={`text-base sm:text-xl font-serif leading-relaxed sm:leading-tight max-w-[260px] z-10 mb-2 ${project.dark ? 'text-white' : 'text-ink-900'}`}>
                 {project.description}
               </h3>
               {project.dark ? (
-                <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-white/5 rotate-45 transform"></div>
+                <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-white/5 rotate-45 transform pointer-events-none"></div>
               ) : (
-                <div className="absolute -bottom-4 -right-4 w-32 h-32 border border-black/5 rounded-full"></div>
+                <div className="absolute -bottom-4 -right-4 w-32 h-32 border border-black/5 rounded-full pointer-events-none"></div>
               )}
             </div>
 
             <div className="flex justify-between items-start pb-4 border-b border-cream-300">
               <div>
-                <h4 className="font-bold text-ink-900 mb-1 max-w-[250px]">{project.title}</h4>
-                <p className="text-xs text-ink-500">{project.tech}</p>
+                <h4 className="font-bold text-ink-900 text-sm sm:text-base mb-1 max-w-[250px]">{project.title}</h4>
+                <p className="text-xs text-ink-500 font-medium">{project.tech}</p>
               </div>
             </div>
           </motion.div>
@@ -253,32 +277,32 @@ function Projects() {
 function Services() {
   const services = [
     {
-      icon: <Database size={24} strokeWidth={1.5} />,
+      icon: <Database size={22} strokeWidth={1.5} />,
       title: "Data Pipelines",
       desc: "Connecting SQL Server ERP data to live Power BI models for real-time tracking."
     },
     {
-      icon: <LayoutDashboard size={24} strokeWidth={1.5} />,
+      icon: <LayoutDashboard size={22} strokeWidth={1.5} />,
       title: "BI Dashboards",
       desc: "Designing intuitive, interactive Power BI reports that leadership actually uses."
     },
     {
-      icon: <Monitor size={24} strokeWidth={1.5} />,
+      icon: <Monitor size={22} strokeWidth={1.5} />,
       title: "Business Analytics",
       desc: "Mining business data to surface operational problems and data-driven solutions."
     },
     {
-      icon: <Smartphone size={24} strokeWidth={1.5} />,
+      icon: <Smartphone size={22} strokeWidth={1.5} />,
       title: "UI/UX & Web Dev",
       desc: "Building internal web tools and interfaces using AI-assisted vibe coding."
     },
     {
-      icon: <Bot size={24} strokeWidth={1.5} />,
+      icon: <Bot size={22} strokeWidth={1.5} />,
       title: "Agentic AI & Automation",
       desc: "Leveraging MCP protocols and APIs to connect multiple AI agents to collaborate and execute complex workflows."
     },
     {
-      icon: <LineChart size={24} strokeWidth={1.5} />,
+      icon: <LineChart size={22} strokeWidth={1.5} />,
       title: "Python Data Analysis",
       desc: "Utilizing Python, Pandas, NumPy, and Matplotlib for advanced data manipulation, statistical modeling, and visualization."
     }
@@ -287,27 +311,27 @@ function Services() {
   return (
     <section id="services" className="border-t border-cream-300">
       <div className="section-container">
-        <div className="flex flex-col lg:flex-row gap-16">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
           <div className="lg:w-1/4">
             <span className="section-label">What I Do</span>
-            <h2 className="text-4xl font-serif text-ink-900">Expertise</h2>
+            <h2 className="text-3xl sm:text-4xl font-serif text-ink-900">Expertise</h2>
           </div>
           
-          <div className="lg:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="lg:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {services.map((service, i) => (
               <motion.div 
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex flex-col"
+                transition={{ delay: i * 0.08 }}
+                className="flex flex-col bg-white p-6 rounded-sm border border-cream-300/80 shadow-xs"
               >
-                <div className="h-12 w-12 rounded-full border border-cream-300 flex items-center justify-center text-sage-500 mb-6 bg-white">
+                <div className="h-11 w-11 rounded-full border border-cream-300 flex items-center justify-center text-sage-500 mb-5 bg-cream-50">
                   {service.icon}
                 </div>
-                <h3 className="font-bold text-ink-900 mb-3">{service.title}</h3>
-                <p className="text-sm text-ink-500 leading-relaxed">{service.desc}</p>
+                <h3 className="font-bold text-ink-900 text-base mb-2">{service.title}</h3>
+                <p className="text-xs sm:text-sm text-ink-500 leading-relaxed">{service.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -324,16 +348,16 @@ function Experience() {
   const experiences = [
     {
       num: "01",
-      icon: <Search size={20} strokeWidth={1.5} />,
+      icon: <Search size={18} strokeWidth={1.5} />,
       title: "Finance Intern",
       company: "Grihum Housing Finance Limited",
       date: "Mar 2025 – Apr 2025",
       desc: (
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           <p>Focused primarily on developing advanced Power BI reports to drive financial development and analytics. Supported the lending team by performing CIBIL credit score verification and building Excel financial models for variance analysis.</p>
           <div>
-            <span className="font-bold text-ink-900">Key Dashboards Developed:</span>
-            <ul className="list-disc pl-4 mt-2 space-y-1 text-ink-500">
+            <span className="font-bold text-ink-900 block mb-1.5">Key Dashboards Developed:</span>
+            <ul className="list-disc pl-4 space-y-1 text-ink-500 text-xs sm:text-sm">
               <li>Customer Outstanding Analysis</li>
               <li>New Customer Information Dashboard</li>
               <li>Employee Assignment Dashboard</li>
@@ -345,22 +369,22 @@ function Experience() {
     },
     {
       num: "02",
-      icon: <Database size={20} strokeWidth={1.5} />,
+      icon: <Database size={18} strokeWidth={1.5} />,
       title: "MIS Trainee",
       company: "Bannari Amman Group",
       date: "Dec 2025 - Apr 2026",
       desc: (
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           <p>Extracted raw operational data from the company ERP system into Excel formats to develop advanced Power BI reports for management across three manufacturing units.</p>
           <div>
-            <span className="font-bold text-ink-900">Key Dashboards Developed:</span>
-            <ul className="list-disc pl-4 mt-2 space-y-3 text-ink-500 text-sm">
-              <li><strong className="text-ink-900">Monthly Sales:</strong> Conducted comprehensive sales analysis (monthly and year-over-year), tracking pre-tax and post-tax revenue. Segmented data by customer, agent, day, and manufacturing unit for multidimensional performance tracking.</li>
-              <li><strong className="text-ink-900">Outstanding Receivables:</strong> Tracked customer and trader outstanding balances against their annual and monthly average sales. Implemented a grading system to evaluate and categorize customers based on their payment holding days.</li>
-              <li><strong className="text-ink-900">Maintenance Cost Analysis:</strong> Monitored electrical and mechanical maintenance expenses to identify high-spending areas, isolate cost drivers, and investigate the root causes of excess expenditure.</li>
-              <li><strong className="text-ink-900">Unmoved Stock & Factory Ageing:</strong> Analyzed factory inventory to identify unmoved stock categories, tracking day-wise ageing to determine why specific product types were stagnant.</li>
-              <li><strong className="text-ink-900">Booking to Delivery Performance:</strong> Tracked the complete order lifecycle from booking date to final product delivery, calculating exact fulfillment timeframes and identifying root causes for shipment delays.</li>
-              <li><strong className="text-ink-900">Cross-Divisional Top Sellers & Buyers:</strong> Developed a comprehensive report across Spinning, Weaving, Knitting, Processing, and Home Textiles divisions. Profiled the top 5 buyers and sellers, analyzing complete company profiles alongside sales, purchases, and outstanding balance metrics.</li>
+            <span className="font-bold text-ink-900 block mb-2">Key Dashboards Developed:</span>
+            <ul className="list-disc pl-4 space-y-2.5 text-ink-500 text-xs sm:text-sm">
+              <li><strong className="text-ink-900">Monthly Sales:</strong> Conducted comprehensive sales analysis (monthly and year-over-year), tracking pre-tax and post-tax revenue. Segmented data by customer, agent, day, and manufacturing unit.</li>
+              <li><strong className="text-ink-900">Outstanding Receivables:</strong> Tracked customer and trader outstanding balances against average sales. Implemented a grading system based on payment holding days.</li>
+              <li><strong className="text-ink-900">Maintenance Cost Analysis:</strong> Monitored electrical and mechanical maintenance expenses to identify high-spending areas and root causes of excess expenditure.</li>
+              <li><strong className="text-ink-900">Unmoved Stock & Factory Ageing:</strong> Analyzed inventory to identify unmoved stock categories, tracking day-wise ageing for stagnant product lines.</li>
+              <li><strong className="text-ink-900">Booking to Delivery Performance:</strong> Tracked the order lifecycle from booking date to delivery, calculating fulfillment timeframes and identifying shipping delays.</li>
+              <li><strong className="text-ink-900">Cross-Divisional Top Sellers & Buyers:</strong> Profiled the top 5 buyers and sellers across Spinning, Weaving, Knitting, Processing, and Home Textiles divisions with full metrics.</li>
             </ul>
           </div>
         </div>
@@ -368,7 +392,7 @@ function Experience() {
     },
     {
       num: "03",
-      icon: <Database size={20} strokeWidth={1.5} />,
+      icon: <Database size={18} strokeWidth={1.5} />,
       title: "Business Analyst",
       company: "Bannari Amman Group",
       date: "May 2026 - Present",
@@ -378,41 +402,41 @@ function Experience() {
 
   return (
     <section id="experience" className="section-container border-b border-cream-300">
-      <div className="flex flex-col lg:flex-row gap-16 items-start">
+      <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
         <div className="lg:w-1/4">
           <span className="section-label">Career Progression</span>
-          <h2 className="text-4xl font-serif text-ink-900">Experience</h2>
+          <h2 className="text-3xl sm:text-4xl font-serif text-ink-900">Experience</h2>
         </div>
         
-        <div className="lg:w-3/4">
-          <div className="flex flex-col gap-16 relative">
-            <div className="absolute top-8 bottom-4 left-[27px] w-[2px] bg-cream-300 z-0">
-              <div className="absolute -bottom-[2px] left-1/2 -translate-x-1/2 w-3 h-3 border-b border-r border-cream-300 transform rotate-45"></div>
+        <div className="lg:w-3/4 w-full">
+          <div className="flex flex-col gap-10 sm:gap-16 relative">
+            <div className="absolute top-6 bottom-4 left-[23px] sm:left-[27px] w-[2px] bg-cream-300 z-0">
+              <div className="absolute -bottom-[2px] left-1/2 -translate-x-1/2 w-2.5 h-2.5 border-b border-r border-cream-300 transform rotate-45"></div>
             </div>
 
             {experiences.map((step, i) => (
               <motion.div 
                 key={i}
-                className="relative z-10 flex flex-col sm:flex-row gap-6 md:gap-10 items-start text-left"
+                className="relative z-10 flex flex-row gap-4 sm:gap-8 items-start text-left"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.08 }}
               >
                 <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 rounded-full bg-white border-2 border-cream-200 shadow-sm flex items-center justify-center text-ink-500 shrink-0 relative z-10">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white border-2 border-cream-200 shadow-xs flex items-center justify-center text-ink-500 shrink-0 relative z-10">
                     {step.icon}
                   </div>
                 </div>
                 
-                <div className="pt-2">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-xs font-bold text-cream-400 uppercase tracking-widest">{step.num}</span>
-                    <h3 className="font-bold text-xl md:text-2xl text-ink-900">{step.title}</h3>
+                <div className="pt-1 flex-1">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+                    <span className="text-[10px] sm:text-xs font-bold text-cream-400 uppercase tracking-widest">{step.num}</span>
+                    <h3 className="font-bold text-lg sm:text-2xl text-ink-900">{step.title}</h3>
                   </div>
-                  <p className="text-sm font-bold text-sage-500 uppercase tracking-wider mb-1">{step.company}</p>
-                  <p className="text-xs text-ink-400 font-mono mb-4">{step.date}</p>
-                  <div className="text-sm text-ink-500 leading-relaxed max-w-2xl">{step.desc}</div>
+                  <p className="text-xs sm:text-sm font-bold text-sage-500 uppercase tracking-wider mb-1">{step.company}</p>
+                  <p className="text-[11px] sm:text-xs text-ink-400 font-mono mb-3">{step.date}</p>
+                  <div className="text-xs sm:text-sm text-ink-500 leading-relaxed max-w-2xl">{step.desc}</div>
                 </div>
               </motion.div>
             ))}
@@ -430,7 +454,7 @@ function Programmes() {
   const programmes = [
     {
       num: "01",
-      icon: <Globe size={20} strokeWidth={1.5} />,
+      icon: <Globe size={18} strokeWidth={1.5} />,
       title: "Global Immersion Programme",
       company: "know skills TVES college, Kuala Lumpur, Malaysia",
       date: "Sep 2024",
@@ -438,7 +462,7 @@ function Programmes() {
     },
     {
       num: "02",
-      icon: <Mic size={20} strokeWidth={1.5} />,
+      icon: <Mic size={18} strokeWidth={1.5} />,
       title: "Conference Presenter",
       company: "International & National Conference",
       date: "Dec 2024",
@@ -448,35 +472,35 @@ function Programmes() {
 
   return (
     <section id="process" className="section-container border-b border-cream-300">
-      <div className="flex flex-col lg:flex-row gap-16 items-start">
+      <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
         <div className="lg:w-1/4">
           <span className="section-label">International Exposure</span>
-          <h2 className="text-4xl font-serif text-ink-900">Programmes</h2>
+          <h2 className="text-3xl sm:text-4xl font-serif text-ink-900">Programmes</h2>
         </div>
         
-        <div className="lg:w-3/4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
+        <div className="lg:w-3/4 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 relative">
             <div className="hidden md:block absolute top-[28px] left-8 right-8 h-[1px] bg-cream-300 z-0"></div>
 
             {programmes.map((step, i) => (
               <motion.div 
                 key={i}
-                className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left"
+                className="relative z-10 flex flex-col items-start text-left bg-white p-6 sm:p-8 rounded-sm border border-cream-300"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
               >
-                <div className="flex items-center justify-center gap-3 mb-6 bg-cream-100 px-2">
-                  <span className="text-[10px] font-bold text-cream-300 uppercase tracking-widest">{step.num}</span>
-                  <div className="w-14 h-14 rounded-full bg-white border border-cream-300 flex items-center justify-center text-ink-500">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-[10px] font-bold text-cream-400 uppercase tracking-widest">{step.num}</span>
+                  <div className="w-11 h-11 rounded-full bg-cream-100 border border-cream-300 flex items-center justify-center text-sage-500 shrink-0">
                     {step.icon}
                   </div>
                 </div>
-                <h3 className="font-bold text-ink-900 mb-1">{step.title}</h3>
-                <p className="text-xs font-bold text-sage-500 uppercase tracking-wider mb-2">{step.company}</p>
-                <p className="text-xs text-ink-500 font-mono mb-4">{step.date}</p>
-                <p className="text-sm text-ink-500 leading-relaxed max-w-sm">{step.desc}</p>
+                <h3 className="font-bold text-ink-900 text-base sm:text-lg mb-1">{step.title}</h3>
+                <p className="text-xs font-bold text-sage-500 uppercase tracking-wider mb-1.5">{step.company}</p>
+                <p className="text-[11px] text-ink-400 font-mono mb-3">{step.date}</p>
+                <p className="text-xs sm:text-sm text-ink-500 leading-relaxed">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -516,30 +540,30 @@ function Education() {
 
   return (
     <section id="education" className="section-container border-b border-cream-300">
-      <div className="flex flex-col lg:flex-row gap-16 items-start">
+      <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
         <div className="lg:w-1/4">
           <span className="section-label">Background</span>
-          <h2 className="text-4xl font-serif text-ink-900">Education</h2>
+          <h2 className="text-3xl sm:text-4xl font-serif text-ink-900">Education</h2>
         </div>
         
-        <div className="lg:w-3/4">
-          <div className="space-y-12">
+        <div className="lg:w-3/4 w-full">
+          <div className="space-y-8 sm:space-y-12">
             {education.map((edu, i) => (
               <motion.div 
                 key={i}
-                className="relative pb-12 border-b border-cream-300 last:border-b-0 last:pb-0"
+                className="relative pb-8 sm:pb-12 border-b border-cream-300 last:border-b-0 last:pb-0"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.08 }}
               >
-                <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                  <h3 className="text-2xl font-serif text-ink-900">{edu.degree}</h3>
-                  <span className="text-xs font-mono text-ink-500 mt-2 md:mt-0 bg-cream-200 px-3 py-1 rounded-sm">{edu.date}</span>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                  <h3 className="text-xl sm:text-2xl font-serif text-ink-900">{edu.degree}</h3>
+                  <span className="text-[11px] font-mono text-ink-500 self-start sm:self-auto bg-cream-200 px-2.5 py-1 rounded-sm">{edu.date}</span>
                 </div>
-                <p className="text-sm font-bold uppercase tracking-widest text-sage-500 mb-2">{edu.major}</p>
-                <p className="text-sm text-ink-500">{edu.school}</p>
-                <p className="text-xs text-ink-400 mt-2">Score: {edu.score}</p>
+                <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-sage-500 mb-1.5">{edu.major}</p>
+                <p className="text-xs sm:text-sm text-ink-500">{edu.school}</p>
+                <p className="text-xs text-ink-400 mt-1.5">Score: {edu.score}</p>
               </motion.div>
             ))}
           </div>
@@ -581,20 +605,20 @@ function Skills() {
   return (
     <section id="skills" className="section-container border-b border-cream-300">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6 }}
       >
         <span className="section-label">Capabilities</span>
         <h2 className="section-title">Skills & Software</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
           {skillGroups.map((group, i) => (
-            <div key={i} className="bg-white rounded-sm p-8 border border-cream-300 hover:border-sage-500 transition-colors">
-              <h3 className="text-lg font-serif text-ink-900 mb-6">{group.category}</h3>
+            <div key={i} className="bg-white rounded-sm p-6 sm:p-8 border border-cream-300 hover:border-sage-500 transition-colors">
+              <h3 className="text-base sm:text-lg font-serif text-ink-900 mb-4 sm:mb-6">{group.category}</h3>
               <div className="flex flex-wrap gap-2">
                 {group.skills.map(skill => (
-                  <span key={skill} className="px-3 py-1 bg-cream-100 text-ink-800 text-xs font-medium rounded-sm border border-cream-300">
+                  <span key={skill} className="px-2.5 sm:px-3 py-1 bg-cream-100 text-ink-800 text-[11px] sm:text-xs font-medium rounded-sm border border-cream-300">
                     {skill}
                   </span>
                 ))}
@@ -626,19 +650,19 @@ function Certifications() {
   return (
     <section id="certifications" className="section-container border-b border-cream-300">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6 }}
       >
         <span className="section-label">Continuous Learning</span>
         <h2 className="section-title">Certifications</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {certifications.map((cert, i) => (
-            <div key={i} className="bg-white rounded-sm p-6 border border-cream-300 hover:border-sage-500 transition-colors flex items-center gap-4 group">
-               <div className="w-2 h-2 rounded-full bg-sage-500/30 group-hover:bg-sage-500 transition-colors"></div>
-               <p className="text-sm font-bold text-ink-800">{cert}</p>
+            <div key={i} className="bg-white rounded-sm p-4 sm:p-6 border border-cream-300 hover:border-sage-500 transition-colors flex items-center gap-3 sm:gap-4 group">
+               <div className="w-2 h-2 rounded-full bg-sage-500/30 group-hover:bg-sage-500 transition-colors shrink-0"></div>
+               <p className="text-xs sm:text-sm font-bold text-ink-800">{cert}</p>
             </div>
           ))}
         </div>
@@ -653,23 +677,23 @@ function Certifications() {
 function Stats() {
   return (
     <div className="bg-cream-200 border-y border-cream-300">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-cream-300/50 text-center">
-          <div className="px-4">
-            <p className="text-4xl md:text-5xl font-serif text-ink-900 mb-2">3</p>
-            <p className="text-xs font-bold uppercase tracking-wider text-ink-500">Major Projects</p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 sm:gap-y-0 divide-x-0 sm:divide-x divide-cream-300/50 text-center">
+          <div className="px-2 sm:px-4">
+            <p className="text-3xl sm:text-4xl md:text-5xl font-serif text-ink-900 mb-1.5 sm:mb-2">3</p>
+            <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-ink-500">Major Projects</p>
           </div>
-          <div className="px-4">
-            <p className="text-4xl md:text-5xl font-serif text-ink-900 mb-2">9</p>
-            <p className="text-xs font-bold uppercase tracking-wider text-ink-500">Certifications</p>
+          <div className="px-2 sm:px-4">
+            <p className="text-3xl sm:text-4xl md:text-5xl font-serif text-ink-900 mb-1.5 sm:mb-2">9</p>
+            <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-ink-500">Certifications</p>
           </div>
-          <div className="px-4">
-            <p className="text-4xl md:text-5xl font-serif text-ink-900 mb-2">30+</p>
-            <p className="text-xs font-bold uppercase tracking-wider text-ink-500">Tools Mastered</p>
+          <div className="px-2 sm:px-4">
+            <p className="text-3xl sm:text-4xl md:text-5xl font-serif text-ink-900 mb-1.5 sm:mb-2">30+</p>
+            <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-ink-500">Tools Mastered</p>
           </div>
-          <div className="px-4">
-            <p className="text-4xl md:text-5xl font-serif text-ink-900 mb-2">MBA</p>
-            <p className="text-xs font-bold uppercase tracking-wider text-ink-500">Finance & Business Analysis</p>
+          <div className="px-2 sm:px-4">
+            <p className="text-3xl sm:text-4xl md:text-5xl font-serif text-ink-900 mb-1.5 sm:mb-2">MBA</p>
+            <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-ink-500">Finance & Business Analysis</p>
           </div>
         </div>
       </div>
@@ -683,11 +707,11 @@ function Stats() {
 function Contact() {
   return (
     <section id="contact" className="section-container pb-0">
-      <div className="bg-cream-200 border border-cream-300 p-12 md:p-16 flex flex-col lg:flex-row justify-between items-center gap-10">
+      <div className="bg-cream-200 border border-cream-300 p-6 sm:p-12 md:p-16 flex flex-col lg:flex-row justify-between items-center gap-8 sm:gap-10 rounded-sm">
         
-        <div className="lg:w-1/2 text-center lg:text-left">
+        <div className="lg:w-1/2 text-center lg:text-left w-full">
           <span className="section-label">Let's Create Something Great</span>
-          <h2 className="text-4xl font-serif text-ink-900 mb-8 max-w-sm mx-auto lg:mx-0">
+          <h2 className="text-3xl sm:text-4xl font-serif text-ink-900 mb-6 sm:mb-8 max-w-sm mx-auto lg:mx-0">
             Have a project in mind? I'd love to hear about it.
           </h2>
           <a href="mailto:ramananmurugan081@gmail.com" className="btn-primary">
@@ -695,28 +719,28 @@ function Contact() {
           </a>
         </div>
 
-        <div className="lg:w-1/2 flex flex-col gap-6 w-full max-w-md mx-auto lg:mx-0">
+        <div className="lg:w-1/2 flex flex-col gap-4 sm:gap-6 w-full max-w-md mx-auto lg:mx-0">
           <div className="flex items-center gap-4 bg-white p-4 border border-cream-300 rounded-sm">
-            <Mail className="text-sage-500" size={20} />
-            <div>
-              <p className="text-xs font-bold text-ink-900 uppercase">Email</p>
-              <p className="text-sm text-ink-500">ramananmurugan081@gmail.com</p>
+            <Mail className="text-sage-500 shrink-0" size={20} />
+            <div className="overflow-hidden">
+              <p className="text-[10px] sm:text-xs font-bold text-ink-900 uppercase">Email</p>
+              <p className="text-xs sm:text-sm text-ink-500 truncate">ramananmurugan081@gmail.com</p>
             </div>
           </div>
           
           <div className="flex items-center gap-4 bg-white p-4 border border-cream-300 rounded-sm">
-            <Phone className="text-sage-500" size={20} />
+            <Phone className="text-sage-500 shrink-0" size={20} />
             <div>
-              <p className="text-xs font-bold text-ink-900 uppercase">Phone</p>
-              <p className="text-sm text-ink-500">+91 8682016038</p>
+              <p className="text-[10px] sm:text-xs font-bold text-ink-900 uppercase">Phone</p>
+              <p className="text-xs sm:text-sm text-ink-500">+91 8682016038</p>
             </div>
           </div>
 
           <div className="flex items-center gap-4 bg-white p-4 border border-cream-300 rounded-sm">
-            <MapPin className="text-sage-500" size={20} />
+            <MapPin className="text-sage-500 shrink-0" size={20} />
             <div>
-              <p className="text-xs font-bold text-ink-900 uppercase">Location</p>
-              <p className="text-sm text-ink-500">Coimbatore, Tamil Nadu</p>
+              <p className="text-[10px] sm:text-xs font-bold text-ink-900 uppercase">Location</p>
+              <p className="text-xs sm:text-sm text-ink-500">Coimbatore, Tamil Nadu</p>
             </div>
           </div>
         </div>
@@ -731,25 +755,25 @@ function Contact() {
 // ==========================================
 function Footer() {
   return (
-    <footer className="pt-24 pb-12 border-t border-cream-300 mt-24">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row justify-between gap-16 mb-24">
+    <footer className="pt-16 sm:pt-24 pb-8 sm:pb-12 border-t border-cream-300 mt-16 sm:mt-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row justify-between gap-10 sm:gap-16 mb-16 sm:mb-24">
         
         {/* Brand */}
         <div className="lg:w-1/3">
-          <div className="flex items-center gap-3 mb-6">
-            <Hexagon className="text-sage-500" size={28} strokeWidth={1.5} />
+          <div className="flex items-center gap-3 mb-4 sm:mb-6">
+            <Hexagon className="text-sage-500 shrink-0" size={28} strokeWidth={1.5} />
             <div>
-              <h1 className="font-sans font-bold text-ink-900 leading-none text-lg tracking-wide uppercase">Ramanan Murugan</h1>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-ink-500 mt-1">Business Analyst</p>
+              <h1 className="font-sans font-bold text-ink-900 leading-none text-base sm:text-lg tracking-wide uppercase">Ramanan Murugan</h1>
+              <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-ink-500 mt-1">Business Analyst</p>
             </div>
           </div>
         </div>
 
-        {/* Links */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-10 flex-1">
+        {/* Navigation Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 flex-1">
           <div>
-            <h4 className="text-[10px] font-bold text-ink-900 uppercase tracking-widest mb-6">Navigation</h4>
-            <ul className="space-y-3 text-sm text-ink-500">
+            <h4 className="text-[10px] font-bold text-ink-900 uppercase tracking-widest mb-4 sm:mb-6">Navigation</h4>
+            <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-ink-500">
               <li><a href="#" className="hover:text-sage-500 transition-colors">Home</a></li>
               <li><a href="#about" className="hover:text-sage-500 transition-colors">About</a></li>
               <li><a href="#work" className="hover:text-sage-500 transition-colors">Work</a></li>
@@ -758,8 +782,8 @@ function Footer() {
           </div>
           
           <div>
-            <h4 className="text-[10px] font-bold text-ink-900 uppercase tracking-widest mb-6">Follow</h4>
-            <ul className="space-y-3 text-sm text-ink-500">
+            <h4 className="text-[10px] font-bold text-ink-900 uppercase tracking-widest mb-4 sm:mb-6">Follow</h4>
+            <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-ink-500">
               <li><a href="https://linkedin.com/in/ram-mur-024281213" target="_blank" rel="noopener noreferrer" className="hover:text-sage-500 transition-colors">LinkedIn</a></li>
               <li><a href="mailto:ramananmurugan081@gmail.com" className="hover:text-sage-500 transition-colors">Email</a></li>
               <li><a href="./RAMANAN_RESUME.pdf" target="_blank" className="hover:text-sage-500 transition-colors">Resume</a></li>
@@ -767,11 +791,11 @@ function Footer() {
           </div>
 
           <div className="col-span-2 md:col-span-1">
-            <h4 className="text-[10px] font-bold text-ink-900 uppercase tracking-widest mb-6">Stay Inspired</h4>
-            <p className="text-sm text-ink-500 mb-4">Get design insights and updates straight to your inbox.</p>
+            <h4 className="text-[10px] font-bold text-ink-900 uppercase tracking-widest mb-4 sm:mb-6">Stay Inspired</h4>
+            <p className="text-xs sm:text-sm text-ink-500 mb-3 sm:mb-4">Get analytics insights and updates straight to your inbox.</p>
             <div className="flex">
-              <input type="email" placeholder="Your email address" className="bg-cream-200 border border-cream-300 px-4 py-2 text-sm w-full outline-none focus:border-sage-500 text-ink-900" />
-              <button className="bg-sage-500 text-white px-4 hover:bg-sage-600 transition-colors">
+              <input type="email" placeholder="Your email address" className="bg-cream-200 border border-cream-300 px-3 sm:px-4 py-2 text-xs sm:text-sm w-full outline-none focus:border-sage-500 text-ink-900 rounded-l-sm" />
+              <button className="bg-sage-500 text-white px-3 sm:px-4 hover:bg-sage-600 transition-colors rounded-r-sm shrink-0" aria-label="Subscribe">
                 <ArrowRight size={16} />
               </button>
             </div>
@@ -781,9 +805,9 @@ function Footer() {
       </div>
       
       {/* Bottom Bar */}
-      <div className="max-w-7xl mx-auto px-6 pt-8 border-t border-cream-300 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-ink-500">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 border-t border-cream-300 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 text-[11px] sm:text-xs text-ink-500 text-center sm:text-left">
         <p>© 2026 Ramanan Murugan. All rights reserved.</p>
-        <div className="flex gap-6">
+        <div className="flex gap-4 sm:gap-6">
           <a href="#" className="hover:text-ink-900 transition-colors">Privacy Policy</a>
           <a href="#" className="hover:text-ink-900 transition-colors">Terms of Service</a>
         </div>
