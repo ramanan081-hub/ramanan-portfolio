@@ -378,7 +378,7 @@ function Experience() {
       num: "02",
       icon: <Database size={18} strokeWidth={1.5} />,
       title: "MIS Trainee",
-      company: "Bannari Amman Group",
+      company: "Bannari Amman Spinning Mills Limited, Coimbatore",
       date: "Dec 2025 - Apr 2026",
       desc: (
         <div className="space-y-3 sm:space-y-4">
@@ -401,7 +401,7 @@ function Experience() {
       num: "03",
       icon: <Database size={18} strokeWidth={1.5} />,
       title: "Business Analyst",
-      company: "Bannari Amman Group",
+      company: "Bannari Amman Spinning Mills Limited, Coimbatore",
       date: "May 2026 - Present",
       desc: "Promoted to lead business analytics. Focused on preparing monthly management reports, verifying overall data accuracy across SQL Server and Power BI, monitoring inter-division transfers, and coordinating with multiple departments to ensure reliable data reporting."
     }
