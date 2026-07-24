@@ -467,6 +467,95 @@ function Services() {
 }
 
 // ==========================================
+// 5.5. AI AGENT & AUTOMATION COMPONENT
+// ==========================================
+function AiAutomation() {
+  const points = [
+    {
+      title: "Create Brain Function (Agentic AI Data & Prompt Engineering)",
+      icon: <Bot size={20} strokeWidth={1.5} />,
+      desc: (
+        <div className="space-y-4">
+          <p>Focused on creating custom "brains" (AI Agents) specialized for specific tasks by engineering precise prompts and data structures. Successfully created over 6 custom AI brains for dedicated workflows.</p>
+          <div className="pl-4 border-l-2 border-sage-500/20 space-y-3">
+            <div>
+              <strong className="text-ink-900 block mb-1">INDAY (Stock Market Agent):</strong>
+              <p className="text-sm">A specialized brain built exclusively for stock market technical analysis and trading. Provided with technical analysis data, tools, and strategies. Connected to a trading platform via MCP (Model Context Protocol). Allowed access to direct live charts to utilize Fibonacci, trend channels, VWAP, and other strategies to provide trading plans and analysis. While standard generative AI cannot access live data, this agent accesses and processes real-time data to autonomously develop its own skills and reasoning.</p>
+            </div>
+            <div>
+              <strong className="text-ink-900 block mb-1">BASML Web (Development Agent):</strong>
+              <p className="text-sm">A brain created solely for website development utilizing "vibe coding". Leverages multi-MCP connections to orchestrate a multi-agent workflow that handles UI/UX development, web searching/scraping, quality testing, bug fixing, and auto-updating GitHub files.</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      title: "MCP and API Integration",
+      icon: <Database size={20} strokeWidth={1.5} />,
+      desc: (
+        <p>Connected MCP (Model Context Protocol) and API keys to enable seamless multi-agent workflows (website-to-website and website-to-AI). Orchestrating multi-step workflows from a single prompt significantly saves time and delivers high-speed, accurate outputs.</p>
+      )
+    },
+    {
+      title: "Vibe Coding",
+      icon: <Code2 size={20} strokeWidth={1.5} />,
+      desc: (
+        <p>Leveraging advanced prompt engineering ("vibe coding") to develop comprehensive websites and applications. Utilizing AI agents for multi-step development architectures, handling everything from UI/UX design and core coding to bug fixing, testing, debugging, user experience enhancement, and final publishing.</p>
+      )
+    },
+    {
+      title: "Deep Research",
+      icon: <Search size={20} strokeWidth={1.5} />,
+      desc: (
+        <p>Employing AI to conduct deep research and collect high-quality information. Bypassing the noise of fake or unreliable information on the internet by utilizing deep research models specifically designed to find real, factual, and real-time data from disparate sources.</p>
+      )
+    },
+    {
+      title: "AI Automation and Scheduling",
+      icon: <Sparkles size={20} strokeWidth={1.5} />,
+      desc: (
+        <p>Utilizing AI for automated task scheduling and execution. For example, prompting AI to automatically generate a daily news summary and send it via email every morning at 09:00 AM. Additionally, setting up autonomous trackers for stock and gold prices that automatically send email or mobile notifications when specific price targets are triggered.</p>
+      )
+    }
+  ];
+
+  return (
+    <section id="ai-automation" className="section-container border-t border-cream-300/70">
+      <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
+        <div className="lg:w-1/4 sticky top-8">
+          <span className="section-label">Future Tech</span>
+          <h2 className="text-3xl sm:text-4xl font-serif text-ink-900 leading-tight">AI Agent &<br />Automation</h2>
+        </div>
+        
+        <div className="lg:w-3/4 flex flex-col gap-6">
+          {points.map((point, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="glass-card p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row gap-5 sm:gap-6 items-start group hover:-translate-y-1 transition-all duration-300"
+            >
+              <div className="w-12 h-12 shrink-0 rounded-xl bg-sage-500/10 border border-sage-500/20 flex items-center justify-center text-sage-600 group-hover:bg-sage-500 group-hover:text-white transition-all duration-300 shadow-xs">
+                {point.icon}
+              </div>
+              <div className="flex-1">
+                <h3 className="text-lg sm:text-xl font-bold text-ink-900 mb-3">{point.title}</h3>
+                <div className="text-sm text-ink-500 leading-relaxed">
+                  {point.desc}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ==========================================
 // 6. EXPERIENCE COMPONENT
 // ==========================================
 function Experience() {
@@ -992,6 +1081,7 @@ export default function App() {
         <Projects />
         <GithubProjects />
         <Services />
+        <AiAutomation />
         <Experience />
         <Programmes />
         <Education />
