@@ -298,6 +298,71 @@ function Projects() {
 }
 
 // ==========================================
+// 4.1. FEATURED PROJECTS COMPONENT
+// ==========================================
+function FeaturedProjects() {
+  return (
+    <section id="featured-projects" className="section-container border-t border-cream-300/70">
+      <div className="flex justify-between items-end mb-10 sm:mb-16">
+        <div>
+          <span className="section-label">Showcase</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-ink-900">Featured Work</h2>
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-12 sm:gap-16">
+        {/* Project 1 */}
+        <motion.div 
+          className="flex flex-col xl:flex-row gap-8 items-center bg-white/60 p-6 sm:p-10 rounded-3xl backdrop-blur-md border border-white/90 shadow-glass"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="w-full xl:w-3/5 rounded-2xl overflow-hidden shadow-lg border border-white/50 relative group">
+            <div className="absolute inset-0 bg-ink-900/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+            <img src="./cotton-dashboard.png" alt="BASML Cotton & Yarn Analysis Dashboard" className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" />
+          </div>
+          <div className="w-full xl:w-2/5 flex flex-col justify-center">
+            <span className="px-3 py-1 text-[10px] font-bold uppercase border rounded-full text-sage-700 border-sage-500/30 bg-sage-500/10 w-fit mb-4">Web Application</span>
+            <h3 className="text-2xl sm:text-3xl font-serif text-ink-900 mb-4">BASML Cotton & Yarn Analysis Dashboard</h3>
+            <p className="text-sm sm:text-base text-ink-500 mb-6 leading-relaxed">
+              A real-time analytics web application designed for tracking, analyzing, and forecasting global and national price movements of multiple cotton and yarn varieties. It leverages API integrations for live data syncing and predictive AI modeling to support management in making highly accurate trading and purchasing decisions.
+            </p>
+            <div className="flex gap-4">
+              <a href="https://ramanan081-hub.github.io/basml-cotton-yarn-dashboard/" target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center gap-2">
+                View Live Site <Globe size={16} />
+              </a>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Project 2 */}
+        <motion.div 
+          className="flex flex-col xl:flex-row-reverse gap-8 items-center bg-white/60 p-6 sm:p-10 rounded-3xl backdrop-blur-md border border-white/90 shadow-glass"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <div className="w-full xl:w-3/5 rounded-2xl overflow-hidden shadow-lg border border-white/50 relative group">
+            <div className="absolute inset-0 bg-ink-900/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+            <img src="./n8n-workflow.png" alt="AI Agent Workflow Automation" className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" />
+          </div>
+          <div className="w-full xl:w-2/5 flex flex-col justify-center">
+            <span className="px-3 py-1 text-[10px] font-bold uppercase border rounded-full text-sage-700 border-sage-500/30 bg-sage-500/10 w-fit mb-4">AI Automation</span>
+            <h3 className="text-2xl sm:text-3xl font-serif text-ink-900 mb-4">Agentic AI Workflow Automation</h3>
+            <p className="text-sm sm:text-base text-ink-500 mb-6 leading-relaxed">
+              A sophisticated n8n workflow implementing multi-agent AI automation. This system is capable of executing complex, multi-step tasks by scraping real-time web data (like daily news and stock prices), processing it through custom LLM agents (Google Gemini), and autonomously orchestrating email deliveries via scheduled triggers.
+            </p>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ==========================================
 // 4.5. GITHUB PROJECTS COMPONENT
 // ==========================================
 function GithubProjects() {
@@ -1128,6 +1193,7 @@ export default function App() {
         <Hero />
         <About />
         <Projects />
+        <FeaturedProjects />
         <GithubProjects />
         <Services />
         <AiAutomation />
