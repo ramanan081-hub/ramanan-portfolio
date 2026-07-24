@@ -423,18 +423,25 @@ function Experience() {
       company: "Bannari Amman Spinning Mills Limited, Coimbatore",
       date: "May 2026 - Present",
       desc: (
-        <div className="space-y-3 sm:space-y-4">
-          <p><strong className="text-ink-900 block mb-1">Manpower Planning & Development:</strong> Collaborated with the HR team and Directors to develop comprehensive Power BI dashboards for employee/worker analysis, HR planning, and development. Engineered data pipelines to monitor workforce trends and support strategic decisions regarding manpower management, welfare activities, and resource allocation across the Head Office and manufacturing units.</p>
+        <div className="space-y-4 sm:space-y-6">
+          {/* Project 1 */}
           <div>
-            <span className="font-bold text-ink-900 block mb-2">Key Dashboards Developed:</span>
-            <ul className="list-disc pl-4 space-y-2.5 text-ink-500 text-xs sm:text-sm">
-              <li><strong className="text-ink-900">Attrition & Resignation Analysis:</strong> Developed multi-dimensional reports to analyze employee turnover by month, year, gender, age, department, and recruitment agent. Identified key drivers behind worker outflow and tracked tenure from joining to resignation.</li>
-              <li><strong className="text-ink-900">Recruitment & Joining Analysis:</strong> Monitored monthly factory worker recruitment metrics, segmenting data by recruitment agent, location, and demographic profiles.</li>
-              <li><strong className="text-ink-900">Workforce Dynamics (Joining vs. Resignation):</strong> Engineered a comparative dashboard analyzing the total influx and outflow of workers. Evaluated recruitment agent performance by tracking total headcount provided versus retention and active availability.</li>
-              <li><strong className="text-ink-900">Comprehensive Salary & Increment Planning:</strong> Created salary analysis reports spanning the Head Office and factory units to track overall payroll expenditure, PF, ESI, and insurance. Facilitated increment planning and visualized salary distributions by division, department, designation, experience, and gender.</li>
-              <li><strong className="text-ink-900">Attendance Analysis:</strong> Tracked month-over-month and year-over-year overall attendance percentages, analyzing trends across various divisions and departments to improve workforce reliability.</li>
-              <li><strong className="text-ink-900">Cotton & Yarn Market Analysis Web Application:</strong> Engineered an automated, AI-driven web application to track, analyze, and forecast global and national price movements of multiple cotton and yarn varieties. Utilized multi-agentic AI, MCP protocols, and API integrations (via "vibe coding") to build a system that scrapes real-time market data, pricing, and industry news every 30 minutes. Implemented technical analysis and forecasting models to help management anticipate price changes based on global market factors and import/export trends.</li>
-            </ul>
+            <p><strong className="text-ink-900 block mb-1">Manpower Planning & Development:</strong> Collaborated with the HR team and Directors to develop comprehensive Power BI dashboards for employee/worker analysis, HR planning, and development. Engineered data pipelines to monitor workforce trends and support strategic decisions regarding manpower management, welfare activities, and resource allocation across the Head Office and manufacturing units.</p>
+            <div className="mt-3 sm:mt-4">
+              <span className="font-bold text-ink-900 block mb-2">Key Dashboards Developed:</span>
+              <ul className="list-disc pl-4 space-y-2.5 text-ink-500 text-xs sm:text-sm">
+                <li><strong className="text-ink-900">Attrition & Resignation Analysis:</strong> Developed multi-dimensional reports to analyze employee turnover by month, year, gender, age, department, and recruitment agent. Identified key drivers behind worker outflow and tracked tenure from joining to resignation.</li>
+                <li><strong className="text-ink-900">Recruitment & Joining Analysis:</strong> Monitored monthly factory worker recruitment metrics, segmenting data by recruitment agent, location, and demographic profiles.</li>
+                <li><strong className="text-ink-900">Workforce Dynamics (Joining vs. Resignation):</strong> Engineered a comparative dashboard analyzing the total influx and outflow of workers. Evaluated recruitment agent performance by tracking total headcount provided versus retention and active availability.</li>
+                <li><strong className="text-ink-900">Comprehensive Salary & Increment Planning:</strong> Created salary analysis reports spanning the Head Office and factory units to track overall payroll expenditure, PF, ESI, and insurance. Facilitated increment planning and visualized salary distributions by division, department, designation, experience, and gender.</li>
+                <li><strong className="text-ink-900">Attendance Analysis:</strong> Tracked month-over-month and year-over-year overall attendance percentages, analyzing trends across various divisions and departments to improve workforce reliability.</li>
+              </ul>
+            </div>
+          </div>
+          
+          {/* Project 2 */}
+          <div className="pt-2 sm:pt-3 border-t border-cream-300/60">
+            <p><strong className="text-ink-900 block mb-1">Cotton & Yarn Market Analysis Web Application:</strong> Engineered an automated, AI-driven web application to track, analyze, and forecast global and national price movements of multiple cotton and yarn varieties. Utilized multi-agentic AI, MCP protocols, and API integrations (via "vibe coding") to build a system that scrapes real-time market data, pricing, and industry news every 30 minutes. Implemented technical analysis and forecasting models to help management anticipate price changes based on global market factors and import/export trends.</p>
           </div>
         </div>
       )
