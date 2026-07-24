@@ -520,6 +520,33 @@ function AiAutomation() {
     }
   ];
 
+  const softwares = [
+    {
+      name: "Google Antigravity",
+      desc: "Used for vibe coding, code development, and building custom AI brain functions. Seamlessly connects multiple AI agents, simplifies prompt management, and integrates via MCP."
+    },
+    {
+      name: "Claude AI",
+      desc: "Go-to for creating advanced reports and generating business dashboards. Actively utilized in web development for robust code testing and debugging workflows."
+    },
+    {
+      name: "Microsoft Copilot 365",
+      desc: "Integrated across the Microsoft ecosystem for daily office operations, including Power BI development (formula generation and mathematical calculations). Leveraged in VS Code to construct, correct, and optimize queries to save time."
+    },
+    {
+      name: "Google Stitch",
+      desc: "Specialized in UI/UX design generation. Develops necessary website designs and seamlessly connects via MCP to Antigravity to share design code for instant frontend implementation."
+    },
+    {
+      name: "Google Gemini / Perplexity",
+      desc: "Dedicated to deep research. Delivers highly accurate, factual information. Integrated with Gmail and mobile devices to automate scheduled data-sharing processes."
+    },
+    {
+      name: "n8n",
+      desc: "The core engine for AI automation and agentic workflow management. Orchestrates multi-agent AI systems and executes complex custom workflows efficiently."
+    }
+  ];
+
   return (
     <section id="ai-automation" className="section-container border-t border-cream-300/70">
       <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
@@ -528,27 +555,49 @@ function AiAutomation() {
           <h2 className="text-3xl sm:text-4xl font-serif text-ink-900 leading-tight">AI Agent &<br />Automation</h2>
         </div>
         
-        <div className="lg:w-3/4 flex flex-col gap-6">
-          {points.map((point, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="glass-card p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row gap-5 sm:gap-6 items-start group hover:-translate-y-1 transition-all duration-300"
-            >
-              <div className="w-12 h-12 shrink-0 rounded-xl bg-sage-500/10 border border-sage-500/20 flex items-center justify-center text-sage-600 group-hover:bg-sage-500 group-hover:text-white transition-all duration-300 shadow-xs">
-                {point.icon}
-              </div>
-              <div className="flex-1">
-                <h3 className="text-lg sm:text-xl font-bold text-ink-900 mb-3">{point.title}</h3>
-                <div className="text-sm text-ink-500 leading-relaxed">
-                  {point.desc}
+        <div className="lg:w-3/4 flex flex-col gap-10">
+          <div className="flex flex-col gap-6">
+            {points.map((point, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="glass-card p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row gap-5 sm:gap-6 items-start group hover:-translate-y-1 transition-all duration-300"
+              >
+                <div className="w-12 h-12 shrink-0 rounded-xl bg-sage-500/10 border border-sage-500/20 flex items-center justify-center text-sage-600 group-hover:bg-sage-500 group-hover:text-white transition-all duration-300 shadow-xs">
+                  {point.icon}
                 </div>
-              </div>
-            </motion.div>
-          ))}
+                <div className="flex-1">
+                  <h3 className="text-lg sm:text-xl font-bold text-ink-900 mb-3">{point.title}</h3>
+                  <div className="text-sm text-ink-500 leading-relaxed">
+                    {point.desc}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* AI Software Stack */}
+          <div className="pt-8 border-t border-cream-300/60">
+            <h3 className="text-xl sm:text-2xl font-serif text-ink-900 mb-6">AI Software Stack</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {softwares.map((software, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                  className="bg-white/50 backdrop-blur-sm border border-white/80 p-5 rounded-xl hover:bg-white/80 transition-colors"
+                >
+                  <strong className="text-ink-900 block mb-1.5">{software.name}</strong>
+                  <p className="text-xs sm:text-sm text-ink-500 leading-relaxed">{software.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
