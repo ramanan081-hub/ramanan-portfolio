@@ -580,7 +580,7 @@ function AiAutomation() {
       title: "AI Automation and Scheduling",
       icon: <Sparkles size={20} strokeWidth={1.5} />,
       desc: (
-        <p>Utilizing AI for automated task scheduling and execution. For example, prompting AI to automatically generate a daily news summary and send it via email every morning at 09:00 AM. Additionally, setting up autonomous trackers for stock and gold prices that automatically send email or mobile notifications when specific price targets are triggered.</p>
+        <p>Utilizing AI for automated task scheduling and execution. For example, prompting AI to automatically generate a daily news summary and send it via email every morning at 09:00 AM. Additionally, setting up autonomous trackers for stock and gold prices that automatically send email or mobile notifications when specific price targets are triggered. I also leverage AI automation via direct prompts to seamlessly access, manage, load, and remove local system files and folders.</p>
       )
     }
   ];
