@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { 
   Menu, X, Mail, Phone, MapPin, Hexagon, ArrowRight, 
   Monitor, Smartphone, LayoutDashboard, Database, Bot, 
-  LineChart, Search, Globe, Mic, Sparkles, Github
+  LineChart, Search, Globe, Mic, Sparkles, Code2
 } from 'lucide-react';
 
 // ==========================================
@@ -369,7 +369,7 @@ function GithubProjects() {
             <a href={repo.url} target="_blank" rel="noopener noreferrer" className="p-6 bg-white/60 rounded-2xl flex flex-col mb-4 sm:mb-6 relative overflow-hidden transition-all duration-300 h-full backdrop-blur-md border border-white/90 shadow-glass group-hover:shadow-glass-hover group-hover:-translate-y-1 group-hover:bg-white/90 group-hover:border-sage-400/30">
               <div className="flex justify-between items-start z-10 mb-5">
                 <div className="w-10 h-10 rounded-xl bg-sage-500/10 border border-sage-500/20 flex items-center justify-center text-sage-600 shrink-0">
-                  <Github size={18} strokeWidth={1.5} />
+                  <Code2 size={18} strokeWidth={1.5} />
                 </div>
                 <span className="px-2.5 py-0.5 text-[9px] font-bold uppercase border rounded-full text-sage-700 border-sage-500/30 bg-sage-500/10 group-hover:bg-sage-500 group-hover:text-white transition-colors duration-300">
                   Repository
