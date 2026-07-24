@@ -440,8 +440,16 @@ function Experience() {
           </div>
           
           {/* Project 2 */}
-          <div className="pt-2 sm:pt-3 border-t border-cream-300/60">
-            <p><strong className="text-ink-900 block mb-1">Cotton & Yarn Market Analysis Web Application:</strong> Engineered an automated, AI-driven web application to track, analyze, and forecast global and national price movements of multiple cotton and yarn varieties. Utilized multi-agentic AI, MCP protocols, and API integrations (via "vibe coding") to build a system that scrapes real-time market data, pricing, and industry news every 30 minutes. Implemented technical analysis and forecasting models to help management anticipate price changes based on global market factors and import/export trends.</p>
+          <div className="pt-4 sm:pt-5 border-t border-cream-300/60">
+            <p><strong className="text-ink-900 block mb-1">Cotton & Yarn Market Analysis Web Application:</strong> Engineered an automated, AI-driven web application to track, analyze, and forecast global and national price movements of multiple cotton and yarn varieties to support management trading decisions.</p>
+            <div className="mt-3 sm:mt-4">
+              <span className="font-bold text-ink-900 block mb-2">Key Features & Capabilities:</span>
+              <ul className="list-disc pl-4 space-y-2.5 text-ink-500 text-xs sm:text-sm">
+                <li><strong className="text-ink-900">Automated Data Scraping & API Integration:</strong> Utilized multi-agentic AI, MCP protocols, and API connections (via "vibe coding") to build a system that scrapes real-time market data, pricing, and industry news from multiple sources, auto-updating every 30 minutes.</li>
+                <li><strong className="text-ink-900">Price Forecasting Models:</strong> Implemented advanced technical analysis and forecasting methods to help management anticipate cotton and yarn price movements day-to-day and time-to-time.</li>
+                <li><strong className="text-ink-900">Global & National Market Tracking:</strong> Tracked macroeconomic factors affecting the business, including import/export changes and market fluctuations for different types of cotton and yarn across global and national markets.</li>
+              </ul>
+            </div>
           </div>
         </div>
       )
