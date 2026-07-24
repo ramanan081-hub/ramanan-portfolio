@@ -433,7 +433,6 @@ function Experience() {
               <li><strong className="text-ink-900">Workforce Dynamics (Joining vs. Resignation):</strong> Engineered a comparative dashboard analyzing the total influx and outflow of workers. Evaluated recruitment agent performance by tracking total headcount provided versus retention and active availability.</li>
               <li><strong className="text-ink-900">Comprehensive Salary & Increment Planning:</strong> Created salary analysis reports spanning the Head Office and factory units to track overall payroll expenditure, PF, ESI, and insurance. Facilitated increment planning and visualized salary distributions by division, department, designation, experience, and gender.</li>
               <li><strong className="text-ink-900">Attendance Analysis:</strong> Tracked month-over-month and year-over-year overall attendance percentages, analyzing trends across various divisions and departments to improve workforce reliability.</li>
-              <li><strong className="text-ink-900">Manpower Planning & Development:</strong> Collaborated with the HR team and Directors to guide decisions on managing employee outflow and ensuring smooth manufacturing operations. Managed employee welfare activities, supervised mess food quality, prepared weekly food menus, and resolved day-to-day operational problems.</li>
             </ul>
           </div>
         </div>
