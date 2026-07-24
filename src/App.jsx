@@ -424,7 +424,7 @@ function Experience() {
       date: "May 2026 - Present",
       desc: (
         <div className="space-y-3 sm:space-y-4">
-          <p>Collaborated with the HR team and Directors to develop comprehensive Power BI dashboards for employee/worker analysis, HR planning, and development. Engineered data pipelines to monitor workforce trends and support strategic decisions regarding manpower management, welfare activities, and resource allocation across the Head Office and manufacturing units.</p>
+          <p><strong className="text-ink-900 block mb-1">Manpower Planning & Development:</strong> Collaborated with the HR team and Directors to develop comprehensive Power BI dashboards for employee/worker analysis, HR planning, and development. Engineered data pipelines to monitor workforce trends and support strategic decisions regarding manpower management, welfare activities, and resource allocation across the Head Office and manufacturing units.</p>
           <div>
             <span className="font-bold text-ink-900 block mb-2">Key Dashboards Developed:</span>
             <ul className="list-disc pl-4 space-y-2.5 text-ink-500 text-xs sm:text-sm">
