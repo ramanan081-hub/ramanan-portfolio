@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { 
   Menu, X, Mail, Phone, MapPin, Hexagon, ArrowRight, 
   Monitor, Smartphone, LayoutDashboard, Database, Bot, 
-  LineChart, Search, Globe, Mic, Sparkles
+  LineChart, Search, Globe, Mic, Sparkles, Github
 } from 'lucide-react';
 
 // ==========================================
@@ -292,6 +292,105 @@ function Projects() {
             </div>
           </motion.div>
         ))}
+      </div>
+    </section>
+  );
+}
+
+// ==========================================
+// 4.5. GITHUB PROJECTS COMPONENT
+// ==========================================
+function GithubProjects() {
+  const repos = [
+    {
+      name: "basml-cotton-yarn-dashboard",
+      description: "A real-time cotton and yarn price monitoring dashboard with AI-powered predictive forecasting for global and Indian markets. Quick Overview Tech: React 18, Vite, JavaScript (98.2%). Purpose: Real-time price tracking, market analysis, AI forecast.",
+      url: "https://github.com/ramanan081-hub/basml-cotton-yarn-dashboard"
+    },
+    {
+      name: "sql-project-powerbi-dashboard",
+      description: "An end-to-end e-commerce database design and sales analytics project using MySQL for transactional data storage and Power BI for interactive dashboard reporting (analyzing sales, customers, and payment methods).",
+      url: "https://github.com/ramanan081-hub/sql-project-powerbi-dashboard"
+    },
+    {
+      name: "Agentic_AI_Automation_Workflow",
+      description: "This project implements an agentic AI automation workflow where autonomous agents can plan, make decisions, and execute tasks dynamically. It supports tool integration, multi-step reasoning, and adaptive workflows to automate complex real-world processes efficiently.",
+      url: "https://github.com/ramanan081-hub/Agentic_AI_Automation_Workflow"
+    },
+    {
+      name: "COMPETITOR_ANALYSIS_AI_AGENT",
+      description: "Financial Intelligence & Competitor Benchmarking Agent specialized in the Indian textile and spinning mills industry. Analyzes competitive position using structured financial data.",
+      url: "https://github.com/ramanan081-hub/COMPETITOR_ANALYSIS_AI_AGENT"
+    },
+    {
+      name: "Artificial_Intelligence_Report",
+      description: "A comprehensive AI Development Report covering the fundamentals of Artificial Intelligence, Machine Learning concepts, AI applications, tools, technologies, real-world use cases, advantages, challenges, and future scope.",
+      url: "https://github.com/ramanan081-hub/Artificial_Intelligence_Report."
+    },
+    {
+      name: "MySQL-database-project",
+      description: "MySQL database designed for an international export company to manage customers, products, orders, order items, and payments, using real-world business queries and SQL functions.",
+      url: "https://github.com/ramanan081-hub/MySQL-database-project"
+    },
+    {
+      name: "Power_BI_dashboard_development",
+      description: "Data analysis, business intelligence, and Power BI dashboard development. Transforming raw business data into meaningful insights that support strategic decision-making and operational improvement.",
+      url: "https://github.com/ramanan081-hub/Power_BI_dashboard_development-"
+    },
+    {
+      name: "MySQL-learning-practice",
+      description: "A personal MySQL learning repository for practicing SQL queries, joins, aggregations, subqueries, and real-world database concepts through hands-on examples.",
+      url: "https://github.com/ramanan081-hub/MySQL-learning-practice"
+    }
+  ];
+
+  return (
+    <section id="github" className="section-container border-t border-cream-300/70 pb-10 sm:pb-16">
+      <div className="flex justify-between items-end mb-10 sm:mb-16">
+        <div>
+          <span className="section-label">Open Source</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-ink-900">GitHub Projects</h2>
+        </div>
+        <a href="https://github.com/ramanan081-hub" target="_blank" rel="noopener noreferrer" className="hidden sm:inline-flex items-center gap-2 text-sm font-bold text-sage-600 hover:text-ink-900 transition-colors uppercase tracking-widest">
+          View GitHub <ArrowRight size={16} />
+        </a>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {repos.map((repo, i) => (
+          <motion.div 
+            key={i} 
+            className="group block h-full"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: (i % 4) * 0.08 }}
+          >
+            <a href={repo.url} target="_blank" rel="noopener noreferrer" className="p-6 bg-white/60 rounded-2xl flex flex-col mb-4 sm:mb-6 relative overflow-hidden transition-all duration-300 h-full backdrop-blur-md border border-white/90 shadow-glass group-hover:shadow-glass-hover group-hover:-translate-y-1 group-hover:bg-white/90 group-hover:border-sage-400/30">
+              <div className="flex justify-between items-start z-10 mb-5">
+                <div className="w-10 h-10 rounded-xl bg-sage-500/10 border border-sage-500/20 flex items-center justify-center text-sage-600 shrink-0">
+                  <Github size={18} strokeWidth={1.5} />
+                </div>
+                <span className="px-2.5 py-0.5 text-[9px] font-bold uppercase border rounded-full text-sage-700 border-sage-500/30 bg-sage-500/10 group-hover:bg-sage-500 group-hover:text-white transition-colors duration-300">
+                  Repository
+                </span>
+              </div>
+              <div className="flex flex-col flex-1">
+                <h3 className="text-sm font-bold text-ink-900 leading-tight mb-2 truncate" title={repo.name}>
+                  {repo.name}
+                </h3>
+                <p className="text-xs text-ink-500 line-clamp-4 leading-relaxed flex-1">
+                  {repo.description}
+                </p>
+              </div>
+            </a>
+          </motion.div>
+        ))}
+      </div>
+      <div className="mt-8 text-center sm:hidden">
+        <a href="https://github.com/ramanan081-hub" target="_blank" rel="noopener noreferrer" className="btn-outline w-full justify-center">
+          View All on GitHub &rarr;
+        </a>
       </div>
     </section>
   );
@@ -891,6 +990,7 @@ export default function App() {
         <Hero />
         <About />
         <Projects />
+        <GithubProjects />
         <Services />
         <Experience />
         <Programmes />
