@@ -933,29 +933,22 @@ function Education() {
 // 9. SKILLS COMPONENT
 // ==========================================
 function Skills() {
-  const skillGroups = [
-    {
-      category: "Technical Skills",
-      skills: [
-        "Business Analytics", "Web Scraping", "Share Market Analysis", 
-        "Data Analysis", "Big Data Analysis", "Cloud Computing", 
-        "SQL", "Data Visualization", "Data Management", 
-        "Business Intelligence", "Marketing Analysis", "Financial & Market Analysis", 
-        "Social Media Analytics", "Vibe Coding", "MCP / API", "Data Pipelines",
-        "Report Creation", "Dashboard Development", "AI Automation", "ERP Data Loading",
-        "Relational Databases", "Database Relationship Management", "Data Quality Development",
-        "Technical Analysis", "KPI Analysis"
-      ]
-    },
-    {
-      category: "Software & Tools",
-      skills: [
-        "Microsoft Office", "Excel", "IBM SPSS", "Google Forms", 
-        "Zoho Recruit", "Tableau", "Power BI", "AWS", 
-        "MySQL", "Zoho CRM", "Canva", "Google Analytics", 
-        "AI Tools", "Python"
-      ]
-    }
+  const technicalSkills = [
+    "Business Analytics", "Web Scraping", "Share Market Analysis", 
+    "Data Analysis", "Big Data Analysis", "Cloud Computing", 
+    "SQL", "Data Visualization", "Data Management", 
+    "Business Intelligence", "Marketing Analysis", "Financial & Market Analysis", 
+    "Social Media Analytics", "Vibe Coding", "MCP / API", "Data Pipelines",
+    "Report Creation", "Dashboard Development", "AI Automation", "ERP Data Loading",
+    "Relational Databases", "Database Relationship Management", "Data Quality Development",
+    "Technical Analysis", "KPI Analysis"
+  ];
+
+  const softwareSkills = [
+    "Microsoft Office", "Excel", "IBM SPSS", "Google Forms", 
+    "Zoho Recruit", "Tableau", "Power BI", "AWS", 
+    "MySQL", "Zoho CRM", "Canva", "Google Analytics", 
+    "AI Tools", "Python"
   ];
 
   return (
@@ -968,19 +961,45 @@ function Skills() {
       >
         <span className="section-label">Capabilities</span>
         <h2 className="section-title">Skills & Software</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
-          {skillGroups.map((group, i) => (
-            <div key={i} className="glass-card p-6 sm:p-8 border border-white/90">
-              <h3 className="text-base sm:text-lg font-serif text-ink-900 mb-4 sm:mb-6">{group.category}</h3>
-              <div className="flex flex-wrap gap-2.5">
-                {group.skills.map(skill => (
-                  <span key={skill} className="px-3 py-1.5 bg-white/80 text-ink-800 text-[11px] sm:text-xs font-medium rounded-full border border-white/90 shadow-xs hover:border-sage-400/40 hover:bg-white transition-all">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+        
+        <div className="mb-12">
+          <h3 className="text-xl font-serif text-ink-900 mb-6">Technical Skills</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+            {technicalSkills.map((skill, i) => (
+              <motion.div 
+                key={skill} 
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.02 }}
+                className="bg-white/60 backdrop-blur-sm border border-white/90 p-4 rounded-xl flex items-center justify-center text-center shadow-glass hover:-translate-y-1 hover:bg-white/80 transition-all duration-300 group"
+              >
+                <span className="text-xs sm:text-sm font-bold text-ink-800 group-hover:text-sage-700 transition-colors">
+                  {skill}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-serif text-ink-900 mb-6">Software & Tools</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+            {softwareSkills.map((skill, i) => (
+              <motion.div 
+                key={skill} 
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.02 }}
+                className="bg-white/60 backdrop-blur-sm border border-white/90 p-4 rounded-xl flex items-center justify-center text-center shadow-glass hover:-translate-y-1 hover:bg-white/80 transition-all duration-300 group"
+              >
+                <span className="text-xs sm:text-sm font-bold text-ink-800 group-hover:text-sage-700 transition-colors">
+                  {skill}
+                </span>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </motion.div>
     </section>
