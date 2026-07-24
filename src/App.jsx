@@ -22,8 +22,9 @@ function Navbar() {
   const links = [
     { name: 'About', href: '#about' },
     { name: 'Work', href: '#work' },
-    { name: 'Services', href: '#services' },
+    { name: 'AI', href: '#ai-automation' },
     { name: 'Experience', href: '#experience' },
+    { name: 'Skills', href: '#skills' },
     { name: 'Contact', href: '#contact' },
   ];
 
