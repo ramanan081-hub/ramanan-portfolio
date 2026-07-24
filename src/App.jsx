@@ -422,7 +422,21 @@ function Experience() {
       title: "Business Analyst",
       company: "Bannari Amman Spinning Mills Limited, Coimbatore",
       date: "May 2026 - Present",
-      desc: "Promoted to lead business analytics. Focused on preparing monthly management reports, verifying overall data accuracy across SQL Server and Power BI, monitoring inter-division transfers, and coordinating with multiple departments to ensure reliable data reporting."
+      desc: (
+        <div className="space-y-3 sm:space-y-4">
+          <p>Collaborated with the HR team and Directors to develop comprehensive Power BI dashboards for employee/worker analysis, HR planning, and development. Engineered data pipelines to monitor workforce trends and support strategic decisions regarding manpower management, welfare activities, and resource allocation across the Head Office and manufacturing units.</p>
+          <div>
+            <span className="font-bold text-ink-900 block mb-2">Key Dashboards Developed:</span>
+            <ul className="list-disc pl-4 space-y-2.5 text-ink-500 text-xs sm:text-sm">
+              <li><strong className="text-ink-900">Attrition & Resignation Analysis:</strong> Developed multi-dimensional reports to analyze employee turnover by month, year, gender, age, department, and recruitment agent. Identified key drivers behind worker outflow and tracked tenure from joining to resignation.</li>
+              <li><strong className="text-ink-900">Recruitment & Joining Analysis:</strong> Monitored monthly factory worker recruitment metrics, segmenting data by recruitment agent, location, and demographic profiles.</li>
+              <li><strong className="text-ink-900">Workforce Dynamics (Joining vs. Resignation):</strong> Engineered a comparative dashboard analyzing the total influx and outflow of workers. Evaluated recruitment agent performance by tracking total headcount provided versus retention and active availability.</li>
+              <li><strong className="text-ink-900">Comprehensive Salary & Increment Planning:</strong> Created salary analysis reports spanning the Head Office and factory units to track overall payroll expenditure, PF, ESI, and insurance. Facilitated increment planning and visualized salary distributions by division, department, designation, experience, and gender.</li>
+              <li><strong className="text-ink-900">Attendance Analysis:</strong> Tracked month-over-month and year-over-year overall attendance percentages, analyzing trends across various divisions and departments to improve workforce reliability.</li>
+            </ul>
+          </div>
+        </div>
+      )
     }
   ];
 
